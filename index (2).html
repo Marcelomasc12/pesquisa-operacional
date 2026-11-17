@@ -1,0 +1,362 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Pesquisa Operacional | Conteúdo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&amp;family=Source+Serif+4:wght@400;600;700&amp;display=swap"><style>:root{--navy:#14213D;--paper:#F6F3EC;--card:#fff;--ink:#1B2433;--muted:#475569;--line:#D8D2C4;--field:#7A8496;--tint:#E6ECF9;--blue:#1D4ED8;--hover:#1E40AF;--amber:#F2A33A;--terracotta:#9A3412;--art:#FBF8F1;--light:#E8ECF4;--shadow:rgba(20,33,61,.12);--hgrid:rgba(246,243,236,.08);--selected:#EEF3FD;--yes-bg:#E6F4EA;--yes-border:#1E7B3A;--yes-text:#14532D;--no-bg:#FCEBEA;--no-border:#B42318;--no-text:#7A1A14;--serif:"Source Serif 4",Georgia,serif;--sans:"Source Sans 3","Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.65 var(--sans)}main{max-width:1600px;margin:auto;padding:clamp(20px,3vw,48px) max(16px,4vw,env(safe-area-inset-left)) 64px max(16px,4vw,env(safe-area-inset-right))}header{display:flex;justify-content:space-between;align-items:center;padding:10px 4vw;background:var(--navy);color:var(--card)}header b{font:600 21px var(--serif)}header b:before{content:"";display:inline-block;width:14px;height:14px;margin-right:10px;background:var(--amber);transform:rotate(-12deg)}nav{display:flex;gap:4px}nav a,.hero a{display:inline-grid;place-items:center;padding:8px 16px;min-height:44px;border-radius:8px;font-weight:600;text-decoration:none;color:var(--paper)}nav a:hover{background:var(--hgrid)}nav [aria-current],.hero a{background:var(--amber);color:var(--navy)}a{color:var(--blue)}:focus-visible{outline:3px solid var(--blue);outline-offset:3px}header :focus-visible,.hero :focus-visible{outline-color:var(--amber)}
+h1,h2,h3,.topic strong{font-family:var(--serif);line-height:1.15;font-weight:600}h1{font-size:40px;margin:.35em 0}h2{font-size:30px;margin:1em 0 .45em}h3{font-size:22px;margin:.5em 0}p{max-width:68ch}small{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terracotta)}#catalog,#exercicios,#revisao{max-width:1160px;margin:auto}.cover,.hero,.launch{background:var(--navy);color:var(--card);border-radius:18px;overflow:hidden}.cover{display:grid;grid-template-columns:1.1fr 1fr;align-items:center}.cover>div,.hero{padding:clamp(24px,4vw,60px)}.cover h1,.hero h1{font-size:clamp(44px,5.2vw,72px);line-height:1.06;letter-spacing:-.02em}.cover p{max-width:34ch;color:var(--light)}.cover small,.hero small,.cover em{color:var(--amber)}.panel{width:100%;display:block}.topic{display:grid;align-items:center;grid-template-columns:clamp(200px,24vw,280px) 1fr 44px;gap:clamp(18px,3vw,40px);margin:16px 0;padding:14px 24px 14px 14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:16px;text-decoration:none;transition:transform .15s,box-shadow .15s}.topic:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 10px 24px var(--shadow)}.topic-art{display:block;width:100%;aspect-ratio:4/3;border:1px solid var(--line);border-radius:12px;background:var(--art)}.topic strong{display:block;font-size:28px;margin:3px 0 6px}.topic span{color:var(--muted);font-size:17px}.topic b{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--card)}.topic:hover b{background:var(--amber);color:var(--navy)}
+.hero{margin:18px 0;background-image:linear-gradient(var(--hgrid) 1px,transparent 1px),linear-gradient(90deg,var(--hgrid) 1px,transparent 1px);background-size:32px 32px}.lesson,.workbench,.redeGrid,.grid{display:grid;gap:16px}.lesson{margin-block:18px}@media(min-width:1100px){.lesson{grid-template-columns:1fr 1fr}}article,.reading,fieldset{min-width:0;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:clamp(16px,2vw,32px)}.reading h2,article>h2:first-child{margin-top:0}.formula,.feedback{padding:14px;background:var(--tint);border-left:4px solid var(--blue)}.formula{font:600 22px var(--serif)}.launch{display:flex;align-items:center;gap:20px;margin:22px 0;padding:14px 20px;font-weight:600;text-decoration:none}.launch svg{width:135px}.launch b{color:var(--amber)}table{width:100%;border-collapse:collapse}table,.key,#plot,output{font-variant-numeric:tabular-nums}th,td{text-align:left;border-bottom:1px solid var(--line);padding:6px}th{background:var(--tint)}table,.key{font-size:15px}
+button,input,select,summary{font:600 16px var(--sans);min-height:44px;border-radius:8px}input,select,button{padding:8px 12px;border:1px solid var(--field);color:var(--ink);background:var(--card)}input,select{width:100%;min-width:0}input{accent-color:var(--blue)}button,summary{cursor:pointer}button:disabled{opacity:.5;cursor:default}button:hover:enabled{background:var(--tint)}#advance,#modelPractice button,#addV,#addR{background:var(--blue);color:var(--card)}#advance:hover,#modelPractice button:hover{background:var(--hover)}label{display:block;font-weight:600;font-size:14.5px}fieldset{margin:12px 0;padding:14px}legend{font-weight:600}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.workbench,.redeGrid{grid-template-columns:clamp(320px,26vw,400px) minmax(0,1fr);align-items:start}.redeGrid{grid-template-columns:clamp(300px,26vw,380px) minmax(0,1fr)}.controls,.redeGrid>article:first-child{max-height:calc(100vh - 96px);overflow:auto}.controls fieldset{background:var(--tint);border-left:5px solid var(--navy)}fieldset button{margin-top:10px}.monitor,.mapCard{position:sticky;top:16px}#result,#gResult{display:block;padding:16px 18px;background:var(--navy);color:var(--card);border-left:5px solid var(--amber);border-radius:8px;font-size:17px;font-weight:600}#gResult{font-weight:700}#plot,#gMap{display:block;width:100%;max-height:calc(100vh - 300px);background:var(--card);border:1px solid var(--line);border-radius:12px;margin:10px 0}#legend .key{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;margin:3px;background:var(--tint);border:1px solid var(--line);border-radius:6px}.key svg{width:32px;height:12px}#downloadPlot{background:var(--navy);color:var(--card)}summary{padding:10px}#extras>summary{display:none}.extrasBody{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:end}#downloadPlot{grid-column:2;grid-row:1}.extrasBody .grid{grid-row:1;grid-column:1}#slice,#legend,#downloadStatus{grid-column:1/-1}#downloadStatus:empty{display:none}
+#pratica,#resumo,#gdesafio{max-width:760px;margin:auto}#question fieldset{border:none;padding:0}#question legend{font:500 28px/1.2 var(--serif)}#question label{display:flex;align-items:center;gap:12px;margin:10px 0;padding:14px 16px;min-height:52px;border:1px solid var(--field);border-radius:10px;cursor:pointer;font-size:16px}#question input,#gEdges input[type=checkbox]{width:auto;min-height:0}#question label:has(:checked){background:var(--selected);border:2px solid var(--blue)}#question label.right,.modelRight{background:var(--yes-bg);border:2px solid var(--yes-border);color:var(--yes-text)}#question label.wrong,.modelWrong{background:var(--no-bg);border:2px solid var(--no-border);color:var(--no-text)}.mark{margin-left:auto}.modelRight,.modelWrong{padding:12px;border-radius:8px}#formulaAnswer{font:20px monospace}#gEdges>div{display:flex;gap:12px;align-items:center;margin:8px 0}#gEdges input[type=number]{width:90px}footer{color:var(--muted);margin-top:30px}#grafos article{margin:16px 0}
+@media(max-width:739px){.workbench,.redeGrid{display:flex;flex-direction:column}.controls,.redeGrid>article:first-child{width:100%;max-height:none;overflow:visible}.monitor,.mapCard{display:contents}.pin,.mapPin{width:100%;order:-3;position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}.pin h3,.mapPin h2{display:none}#result,#gResult{font-size:15px;line-height:1.4;max-height:4.2em;overflow:auto;padding:6px 12px;margin:0}#plot,#gMap{height:34dvh;height:34svh;max-height:none;margin:4px 0}#extras{order:-2;width:100%}#extras>summary{display:list-item}.extrasBody{display:flex;flex-direction:column;align-items:stretch}.controls .grid label:first-child:has(input:not([type=number])){grid-column:1/-1}}
+@media(max-width:600px){body{font-size:17px;line-height:1.6}header{flex-wrap:wrap;gap:8px}nav{width:100%}nav a{flex:1;padding:8px}.cover{grid-template-columns:1fr}.cover .panel{height:150px}.cover h1,.hero h1{font-size:38px}h1{font-size:32px}h2{font-size:24px}h3,.formula{font-size:19px}.topic{grid-template-columns:1fr;gap:12px;padding:14px}.topic-art{height:168px}.topic b{display:none}.topic strong{font-size:26px}small{font-size:12px}button{min-height:48px}label,table,.key{font-size:14px}#question legend{font-size:22px}#formulaAnswer{font-size:18px}#plot text{font-size:20px}#plot .optimum{r:8px}#plot line[stroke-width="2.8"]{stroke-width:3.5px}}
+@media(max-height:500px) and (orientation:landscape){.workbench,.redeGrid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr)}.monitor,.mapCard{display:block;position:sticky;top:0}.controls,.redeGrid>article:first-child{max-height:90vh;overflow:auto}.pin,.mapPin{position:static}#plot,#gMap{height:50svh;max-height:none}.extrasBody{display:flex;flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.topic{transition:none}.topic:hover{transform:none}}
+@media(min-width:740px){.monitor{display:grid;grid-template-columns:1fr auto;gap:6px}.monitor .pin,.monitor #extras[open],.monitor #extras[open] .extrasBody{display:contents}.monitor h3,#result,#chart,#legend,#slice,#downloadStatus{grid-column:1/-1}.monitor h3{order:0}#result{order:1}.extrasBody .grid{order:2;grid-column:1;grid-row:auto}#downloadPlot{order:3;grid-column:2;grid-row:auto;align-self:end}#downloadStatus{order:4}#slice{order:5;margin:6px 0}#chart{order:6}#legend{order:7}} #newCity,#newRoad,#deleteCity{margin:12px 0;border:1px solid var(--line);border-radius:10px;padding:0 10px}#newCity label,#newRoad label,#deleteCity label{margin:10px 0}#newCity button,#deleteCity button{margin-bottom:12px}#cityLetter{text-transform:uppercase}#cityMessage:empty{display:none}</style><body><svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><pattern id="paperGrid" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0V16" fill="none" stroke="#E4DDCD"/></pattern><symbol id="linear" viewBox="0 0 240 180"><rect width="240" height="180" fill="#FBF8F1"/><rect width="240" height="180" fill="url(#paperGrid)"/><path d="M30 20V150H218" fill="none" stroke="#14213D" stroke-width="2"/><path d="M30 150H126V117L90 67 54 39H30Z" fill="#F6D58E" fill-opacity=".65" stroke="#14213D" stroke-width="2"/><path d="M30 32.83L218 81.14" stroke="#C2410C" stroke-width="2" stroke-dasharray="6 4"/><circle cx="54" cy="39" r="12" fill="none" stroke="#C2410C" stroke-width="2"/><circle cx="54" cy="39" r="7" fill="#14213D" stroke="white" stroke-width="2"/><rect x="69" y="16" width="64" height="21" rx="6" fill="#14213D"/><text x="77" y="31" fill="white" font-size="12" font-weight="700">(10, 60)</text></symbol><symbol id="network" viewBox="0 0 240 180"><rect width="240" height="180" fill="#FBF8F1"/><rect width="240" height="180" fill="url(#paperGrid)"/><path d="M30 92L82 38" stroke="#8B94A3" stroke-width="2"/><path d="M30 92L100 142" stroke="#8B94A3" stroke-width="2"/><path d="M82 38L170 40" stroke="#8B94A3" stroke-width="2"/><path d="M82 38L208 112" stroke="#8B94A3" stroke-width="2"/><path d="M82 38L100 142" stroke="#8B94A3" stroke-width="2"/><path d="M170 40L208 112" stroke="#8B94A3" stroke-width="2"/><path d="M170 40L100 142" stroke="#8B94A3" stroke-width="2"/><path d="M208 112L100 142" stroke="#8B94A3" stroke-width="2"/><path d="M30 92L82 38 208 112" fill="none" stroke="white" stroke-width="7"/><path d="M30 92L82 38 208 112" fill="none" stroke="#C2410C" stroke-width="5"/><circle cx="30" cy="92" r="13" fill="#14213D" stroke="#F2A33A" stroke-width="2.5"/><text x="30" y="97" text-anchor="middle" font-size="14" font-weight="700" fill="white">A</text><circle cx="82" cy="38" r="13" fill="#14213D" stroke="#F2A33A" stroke-width="2.5"/><text x="82" y="43" text-anchor="middle" font-size="14" font-weight="700" fill="white">B</text><circle cx="170" cy="40" r="13" fill="white" stroke="#14213D" stroke-width="2.5"/><text x="170" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="#14213D">C</text><circle cx="208" cy="112" r="13" fill="#14213D" stroke="#F2A33A" stroke-width="2.5"/><text x="208" y="117" text-anchor="middle" font-size="14" font-weight="700" fill="white">D</text><circle cx="100" cy="142" r="13" fill="white" stroke="#14213D" stroke-width="2.5"/><text x="100" y="147" text-anchor="middle" font-size="14" font-weight="700" fill="#14213D">E</text><g font-size="12" font-weight="700" fill="#14213D" stroke="white" stroke-width="4" paint-order="stroke"><text x="49" y="61">7</text><text x="143" y="72">21</text></g><rect x="9" y="154" width="119" height="21" rx="6" fill="#14213D"/><text x="17" y="169" fill="white" font-size="12" font-weight="700">A → B → D · 28 km</text></symbol><symbol id="panel" viewBox="0 0 420 280"><rect width="420" height="280" fill="#14213D"/><rect x="12" y="23" width="400" height="235" rx="16" fill="#F6F3EC"/><svg x="139" y="33" width="268" height="214" viewBox="0 0 240 180"><rect width="240" height="180" fill="#FBF8F1"/><rect width="240" height="180" fill="url(#paperGrid)"/><path d="M30 20V150H218" fill="none" stroke="#14213D" stroke-width="2"/><path d="M30 150H126V117L90 67 54 39H30Z" fill="#F6D58E" fill-opacity=".65" stroke="#14213D" stroke-width="2"/><path d="M30 32.83L218 81.14" stroke="#C2410C" stroke-width="2" stroke-dasharray="6 4"/><circle cx="54" cy="39" r="12" fill="none" stroke="#C2410C" stroke-width="2"/><circle cx="54" cy="39" r="7" fill="#14213D" stroke="white" stroke-width="2"/></svg><path d="M30 91H122" stroke="#D8D2C4" stroke-width="6"/><path d="M30 91H82" stroke="#F2A33A" stroke-width="6"/><circle cx="82" cy="91" r="9" fill="#F2A33A"/><path d="M30 140H122" stroke="#D8D2C4" stroke-width="6"/><path d="M30 140H57" stroke="#1D4ED8" stroke-width="6"/><circle cx="57" cy="140" r="9" fill="#1D4ED8"/><path d="M30 189H122" stroke="#D8D2C4" stroke-width="6"/><path d="M30 189H103" stroke="#C2410C" stroke-width="6"/><circle cx="103" cy="189" r="9" fill="#C2410C"/></symbol></defs></svg><header><b>Pesquisa Operacional</b><nav aria-label="Seções"><a href="#conteudo">Conteúdo</a><a href="#exercicios">Exercícios</a><a href="#revisao">Revisão</a></nav></header><main>
+<section id="catalog"><div class="cover"><div><small>Material da disciplina</small><h1>Pesquisa<br><em>Operacional</em></h1><p>Estude as decisões de um modelo e explore os resultados no simulador.</p></div><svg class="panel" viewBox="0 0 420 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#panel"/></svg></div><h2>Conteúdo</h2><a class="topic" href="#ponto-otimo"><svg class="topic-art" viewBox="0 0 240 180" role="img" aria-label="Região viável e vértice ótimo em (10, 60)"><use href="#linear"/></svg><div><small>Programação linear</small><strong>Ponto ótimo</strong><span>Função objetivo, restrições e interpretação gráfica</span></div><b aria-hidden="true">↗</b></a><a class="topic" href="#grafos"><svg class="topic-art" viewBox="0 0 240 180" role="img" aria-label="Rota A até D via B, com 7 e 21 km"><use href="#network"/></svg><div><small>Redes e caminhos</small><strong>Teoria dos grafos</strong><span>Cidades, estradas e caminhos mínimos</span></div><b aria-hidden="true">↗</b></a></section><section id="lesson" hidden><a href="#conteudo">← Conteúdo</a><div class="hero"><p><small>Programação linear</small></p><h1>Ponto ótimo</h1><p>Uma decisão pode respeitar todos os limites e ainda deixar espaço para melhorar. O ponto ótimo é uma combinação de decisões que atinge o melhor valor possível para o objetivo escolhido.</p>
+<a href="#simulador">Abrir simulador →</a></div><div class="lesson"><div class="reading"><h2>O que você pode decidir?</h2><p>Cada variável representa uma quantidade que você controla. Na aula da fábrica, x₁ e x₂ são as quantidades de dois produtos. Em outro problema, poderiam ser horas dedicadas a atividades ou quantidades transportadas por rotas diferentes.</p>
+</div><div class="reading"><h2>Como medir o resultado?</h2><p>A função objetivo transforma uma combinação de quantidades em um resultado. Se cada unidade rende 20 ou 60 reais, conforme o produto, o lucro é a soma das duas contribuições.</p><p class="formula">Z = 20x₁ + 60x₂</p><p>Produzir 10 e 60 unidades dá 20 × 10 + 60 × 60 = R$ 3.800. Para saber se esse valor é o maior possível, precisamos conhecer os limites.</p>
+</div><div class="reading"><h2>Quais combinações são possíveis?</h2><p>Se cada unidade usa 70 kg de um material e há 4.900 kg disponíveis, então 70x₁ + 70x₂ ≤ 4.900. A reta da igualdade reúne as combinações que esgotam o material. Do lado que contém a origem ficam aquelas que consomem menos. A região viável reúne os pontos que respeitam <b>todas</b> as restrições, incluindo as quantidades não negativas.</p>
+</div><div class="reading"><h2>Onde aparece o ótimo?</h2><p>No plano, as retas de mesmo lucro são paralelas. Ao deslocar uma delas no sentido de lucro crescente, o último contato com a região viável dá o ótimo. No exemplo da aula, esse contato ocorre em (10, 60). Se a reta tocar uma aresta inteira, todos os pontos dessa aresta empatam.</p><p>Com três ou mais variáveis, cada solução tem mais de duas coordenadas. O simulador resolve o modelo completo. Para desenhar um corte em duas dimensões, mantém as demais variáveis nas quantidades da solução indicada.</p></div>
+<div class="reading"><h2>De onde vem o ponto (10, 60)?</h2><p>A equipe do produto 2 dispõe de 180 horas. Cada unidade exige 3 horas, então 180 ÷ 3 = <b>60 unidades</b>. O material A permite produzir 4.900 ÷ 70 = <b>70 unidades no total</b>.</p><p>Ao produzir 60 unidades do produto 2, sobram materiais para 10 do produto 1. Essa combinação usa 3.900 dos 4.500 kg de material B e 20 das 80 horas da equipe 1. Portanto, ela respeita também os outros limites.</p><p>Por que ela é ótima? Reescreva o lucro como <b>20(x₁ + x₂) + 40x₂</b>. Como a soma é no máximo 70 e x₂ é no máximo 60, o lucro é no máximo 20 × 70 + 40 × 60 = <b>3.800</b>. O ponto (10, 60) atinge esse valor.</p></div>
+<div class="reading"><h2>O que muda quando um limite muda?</h2><p>No simulador, altere o limite da quarta restrição de 180 para 150 horas. A reta horizontal desce de 60 para 50 unidades do produto 2. O ponto (10, 60) deixa de ser viável.</p><table><caption>Comparação com as demais condições da aula</caption><thead><tr><th>Horas P2</th><th>(x₁, x₂)</th><th>Lucro máximo</th></tr></thead><tbody><tr><td>180</td><td>(10, 60)</td><td>R$ 3.800</td></tr><tr><td>150</td><td>(20, 50)</td><td>R$ 3.400</td></tr></tbody></table><p>Experimente agora alterar apenas o lucro unitário. As restrições continuam desenhando a mesma região, mas outra combinação pode passar a ser a melhor.</p></div></div><a class="launch" href="#simulador"><svg class="panel" viewBox="0 0 420 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#panel"/></svg><strong>Abrir simulador →</strong></a></section><section id="simulador" hidden><a href="#ponto-otimo">← Voltar à aula</a><h1>Simulador de ponto ótimo</h1><p>Comece com os valores da aula ou renomeie variáveis e restrições para representar sua situação. As quantidades podem ser fracionárias e devem ser não negativas.</p>
+<div class="workbench"><article class="controls" tabindex="0" aria-label="Controles do modelo"><h3>Editar modelo</h3><label>Objetivo<select id="sense"><option value="1">Maximizar</option><option value="-1">Minimizar</option></select></label><h3>Variáveis de decisão</h3><div id="vars"></div><button id="addV">+ Variável</button><h3>Restrições</h3><p>Em cada linha, informe quanto uma unidade de cada variável contribui para a restrição e escolha o limite.</p><div id="rows"></div><div class="actions"><button id="addR">+ Restrição</button><button id="reset">Restaurar modelo da aula</button></div></article>
+<article class="monitor"><div class="pin"><h3>Resultado e gráfico</h3><output id="result" aria-live="polite"></output><div id="chart"><svg id="plot" viewBox="0 0 620 365" role="img" aria-label="Corte da região viável e ponto ótimo"></svg></div></div><details id="extras"><summary>Eixos, legenda e download</summary><div class="extrasBody"><button type="button" id="downloadPlot"><span aria-hidden="true">⤓</span> Baixar gráfico e modelo (PNG)</button><span role="status" id="downloadStatus"></span><div class="grid"><label>Eixo horizontal<select id="axisX"></select></label><label>Eixo vertical<select id="axisY"></select></label></div><p id="slice"></p><div id="legend"></div></div></details></article></div><footer>Baseado na aula de 22/09/2026 · Prof. Dr. Joelson A. Delfino</footer></section><section id="exercicios" hidden><h1>Exercícios</h1><p>Escolha o conteúdo que quer praticar.</p><a class="topic" href="#pratica"><svg class="topic-art" viewBox="0 0 240 180" role="img" aria-label="Região viável e vértice ótimo em (10, 60)"><use href="#linear"/></svg><div><small>Programação linear</small><strong>Ponto ótimo</strong><span>20 questões com respostas comentadas</span></div><b aria-hidden="true">↗</b></a><a class="topic" href="#gdesafio"><svg class="topic-art" viewBox="0 0 240 180" role="img" aria-label="Rota A até D via B, com 7 e 21 km"><use href="#network"/></svg><div><small>Redes e caminhos</small><strong>Rotas entre cidades</strong><span>Teste seus conhecimentos sobre a rede</span></div><b aria-hidden="true">↗</b></a></section><section id="pratica" hidden><a href="#exercicios">← Exercícios</a><h1>Ponto ótimo</h1><article id="question"></article></section><section id="revisao" hidden><h1>Revisão</h1><a class="topic" href="#resumo"><svg class="topic-art" viewBox="0 0 240 180" role="img" aria-label="Região viável e vértice ótimo em (10, 60)"><use href="#linear"/></svg><div><small>Programação linear</small><strong>Ponto ótimo</strong><span>Monte o modelo: escreva a função objetivo e as restrições</span></div><b aria-hidden="true">↗</b></a><a class="topic" href="#gdesafio"><svg class="topic-art" viewBox="0 0 240 180" role="img" aria-label="Rota A até D via B, com 7 e 21 km"><use href="#network"/></svg><div><small>Redes e caminhos</small><strong>Revisar grafos</strong><span>Escreva o custo e o percurso</span></div><b aria-hidden="true">↗</b></a></section><section id="resumo" hidden><a href="#revisao">← Revisão</a><h1>Monte o modelo</h1><p>Leia o cenário e traduza cada informação para a linguagem matemática. Você escreve uma expressão por vez e recebe uma dica se precisar corrigir.</p><article id="modelPractice"></article></section><section id="grafos" hidden><a href="#conteudo">← Conteúdo</a><h1>Teoria dos grafos</h1><article><h2>Como representar uma rede?</h2><p>Imagine cinco cidades ligadas por estradas. Desenhe um ponto para cada cidade e um traço para cada estrada. Os pontos são os <b>vértices</b>, e os traços são as <b>arestas</b>. A posição dos pontos no desenho é livre. A distância real aparece no peso de cada aresta.</p><h2>Como ler o desenho</h2><p>A estrada AB incide em A e B. Como existe uma ligação direta, esses vértices são adjacentes. O grau de um vértice conta quantas pontas de arestas chegam a ele. Um laço sai e volta ao mesmo vértice e acrescenta dois ao grau. Um vértice isolado tem grau zero. A ordem do grafo é o número de vértices.</p><h2>Qual percurso escolher?</h2><p>Para calcular o custo de um caminho, some os pesos das estradas percorridas. Na atividade, ir de A a E diretamente custa 17 km. Passar por B custa 7 + 11 = 18 km. Se a estrada AE passar a medir 20 km, qual das duas opções fica melhor?</p><p>O problema do vendedor tem outra exigência: visitar cada cidade uma vez e voltar ao início. Uma rota curta entre duas cidades pode deixar outras de fora. No simulador, alterne entre os dois objetivos e compare os percursos.</p><h2>As sete pontes de Königsberg</h2><p>Euler representou cada região por um vértice e cada ponte por uma aresta. Para atravessar cada ponte uma vez e voltar ao início, cada entrada numa região precisa fazer par com uma saída. Em uma rede conectada, o circuito existe quando todos os graus são pares. Com exatamente dois graus ímpares, o percurso pode começar em um deles e terminar no outro. As sete pontes produziam quatro graus ímpares (5, 3, 3 e 3), impedindo ambos os percursos.</p><a class="launch" href="#rede">Abrir simulador de grafos →</a></article></section>
+<section id="rede" hidden><a href="#grafos">← Teoria dos grafos</a><h1>Simulador de rotas</h1><div class="redeGrid"><article><label>Objetivo<select id="gMode"><option>Caminho mínimo</option><option>Visitar todas e retornar</option></select></label><label>Origem<select id="gStart"></select></label><label>Destino<select id="gEnd"></select></label><h2>Estradas</h2><p>Marque as ligações abertas e edite a distância em km.</p><div id="gEdges"></div><details id="newCity"><summary>Adicionar cidade</summary><div id="cityForm"><label>Letra da nova cidade<input id="cityLetter" required pattern="[A-Za-z]" maxlength="1" autocomplete="off" placeholder="Ex.: Z"></label><label id="connectLabel">Conectar à cidade<select id="cityLink"></select></label><label id="distanceLabel">Distância da estrada (km)<input id="cityDistance" required type="text" inputmode="decimal" placeholder="Ex.: 5"></label><button type="button" id="addCity">Adicionar ao mapa</button><p role="status" id="cityError"></p></div></details><details id="newRoad"><summary>Adicionar estrada</summary><label>Primeira cidade<select id="roadFrom"></select></label><label>Segunda cidade<select id="roadTo"></select></label><label>Distância (km)<input id="roadDistance" type="text" inputmode="decimal" placeholder="Ex.: 4,5"></label><button type="button" id="createRoad">Criar estrada</button><p role="status" id="roadMessage"></p></details><details id="deleteCity"><summary>Excluir cidade</summary><label>Cidade e estradas que serão removidas<select id="cityDelete"></select></label><button type="button" id="removeCity">Excluir cidade selecionada</button></details><p role="status" id="cityMessage"></p><button id="gReset">Restaurar grafo padrão</button></article><article class="mapCard"><div class="mapPin"><h2>Mapa da rede</h2><p id="gResult" role="status"></p><svg id="gMap" role="img" aria-label="Rede de cinco cidades" viewBox="0 0 500 320"></svg></div><p>Linha laranja grossa · rota escolhida<br>Linha cinza · outra estrada aberta</p><p id="gDegrees"></p></article></div></section>
+
+<script>
+(()=>{
+const initialCities=['A','B','C','D','E'];
+const initialRoads=['AB','AE','BC','BD','CE','CD','ED','EB'], initialWeights=[7,17,10,21,8,12,33,11];
+const originalPoints={A:[55,150],B:[190,55],C:[365,58],D:[445,220],E:[200,275]};
+let cities,roads,points;
+const el=id=>document.getElementById(id);
+function syncMenus(){
+ const options=cities.map(c=>'<option>'+c+'</option>').join('');
+ for(const id of ['gStart','gEnd','cityLink','cityDelete','roadFrom','roadTo']){
+  const menu=el(id),previous=menu.value;
+  menu.innerHTML=options;
+  if(cities.includes(previous))menu.value=previous;
+ }
+ el('createRoad').disabled=cities.length<2;
+ el('roadMessage').textContent=cities.length<2?'Adicione duas cidades para criar uma estrada.':'';
+ if(cities.length>1&&el('roadTo').value===el('roadFrom').value)el('roadTo').value=cities.find(c=>c!==el('roadFrom').value);
+ const empty=!cities.length;
+ el('connectLabel').hidden=el('distanceLabel').hidden=empty;
+ el('cityDistance').disabled=el('removeCity').disabled=empty;
+ fitMap();
+ el('gMap').setAttribute('aria-label','Mapa da rede com '+cities.length+' cidades');
+}
+function addRoad(road,weight){
+ roads.push(road);
+ el('gEdges').insertAdjacentHTML('beforeend','<div><label><input type="checkbox" checked> '+road+'</label><input aria-label="Distância '+road+' em quilômetros" type="number" inputmode="decimal" min="0" step="any" value="'+weight+'"></div>');
+}
+function reset(){
+ cities=[...initialCities];roads=[];points={...originalPoints};
+ el('gEdges').replaceChildren();initialRoads.forEach((road,i)=>addRoad(road,initialWeights[i]));
+ syncMenus();clearCityFields();el('roadDistance').value='';el('newRoad').open=el('newCity').open=el('deleteCity').open=false;
+ el('gEnd').value='E';el('gStart').value='A';el('gMode').selectedIndex=0;draw();
+}
+function distanceToRoad(point,a,b){
+ const dx=b[0]-a[0],dy=b[1]-a[1];
+ const fraction=Math.max(0,Math.min(1,((point[0]-a[0])*dx+(point[1]-a[1])*dy)/(dx*dx+dy*dy||1)));
+ return Math.hypot(point[0]-a[0]-fraction*dx,point[1]-a[1]-fraction*dy);
+}
+function placeCity(parent){
+ if(!parent)return [250,160];
+ const origin=points[parent],others=cities.filter(c=>c!==parent);
+ const existing=roads.map(r=>[points[r[0]],points[r[1]]]);
+ let bestScore=-Infinity,bestPoint;
+ for(let ring=1;ring<=32;ring++){
+  const radius=80+ring*30;
+  for(let step=0;step<120;step++){
+   const angle=step*Math.PI/60;
+   const point=[origin[0]+radius*Math.cos(angle),origin[1]+radius*Math.sin(angle)];
+   const nodeGap=Math.min(...cities.map(c=>Math.hypot(point[0]-points[c][0],point[1]-points[c][1])));
+   const edgeGap=Math.min(...existing.map(([a,b])=>distanceToRoad(point,a,b)));
+   const pathGap=Math.min(...others.map(c=>distanceToRoad(points[c],origin,point)));
+   const outside=Math.max(0,30-point[0],point[0]-470,30-point[1],point[1]-290);
+   const clearance=Math.min(nodeGap/70,edgeGap/48,pathGap/44);
+   const score=Math.min(1.4,clearance)-outside*.0006-radius*.0001;
+   if(score>bestScore){bestScore=score;bestPoint=point}
+  }
+  if(bestScore>=1.12)break;
+ }
+ return bestPoint;
+}
+function fitMap(){
+ const coords=Object.values(points),xs=coords.map(p=>p[0]),ys=coords.map(p=>p[1]);
+ const left=Math.min(0,...xs.map(x=>x-44)),top=Math.min(0,...ys.map(y=>y-44));
+ const width=Math.max(500,...xs.map(x=>x+44))-left,height=Math.max(320,...ys.map(y=>y+44))-top;
+ el('gMap').setAttribute('viewBox',[left,top,width,height].join(' '));
+}
+function clearCityFields(){
+ el('cityLetter').value='';el('cityDistance').value='';el('cityError').textContent='';
+}
+function cityError(message,id){
+ el('cityError').textContent=message;el(id).focus();
+}
+function submitCity(){
+ const name=el('cityLetter').value.trim().toUpperCase(),parent=el('cityLink').value;
+ if(!/^[A-Z]$/.test(name)||cities.includes(name)){
+  cityError(cities.includes(name)?'A cidade '+name+' já existe. Escolha outra letra.':'Digite uma letra de A a Z.','cityLetter');
+  el('cityLetter').select();return;
+ }
+ const raw=el('cityDistance').value.trim().replace(',','.');
+ const distance=Number(raw);
+ if(cities.length&&!cities.includes(parent))return cityError('Escolha a cidade que receberá a estrada.','cityLink');
+ if(cities.length&&(!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(raw)||!Number.isFinite(distance)))return cityError('Informe a distância em km, por exemplo 5 ou 2,5.','cityDistance');
+ points[name]=placeCity(parent);cities.push(name);
+ if(parent)addRoad(parent+name,distance);
+ syncMenus();clearCityFields();el('newCity').open=false;draw();
+ el('cityMessage').textContent=parent?'Cidade '+name+' adicionada. Estrada '+parent+name+' de '+distance.toLocaleString('pt-BR')+' km.':'Cidade '+name+' adicionada ao mapa.';
+}
+el('addCity').onclick=submitCity;
+el('cityForm').onkeydown=event=>{
+ if(event.key==='Enter'&&event.target.tagName==='INPUT'){event.preventDefault();submitCity()}
+};
+el('createRoad').onclick=()=>{
+ const a=el('roadFrom').value,b=el('roadTo').value,msg=el('roadMessage');
+ if(!cities.includes(a)||!cities.includes(b)||a===b){msg.textContent='Escolha duas cidades diferentes.';return}
+ if(roads.includes(a+b)||roads.includes(b+a)){msg.textContent='Essa estrada já existe. Você pode editar a distância ou reabri-la na lista.';return}
+ const raw=el('roadDistance').value.trim().replace(',','.'),distance=Number(raw);
+ if(!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(raw)||!Number.isFinite(distance)){msg.textContent='Informe uma distância em km, por exemplo 4,5.';el('roadDistance').focus();return}
+ addRoad(a+b,distance);draw();
+ el('roadDistance').value='';msg.textContent='';el('newRoad').open=false;
+ el('cityMessage').textContent='Estrada '+a+'–'+b+' criada com '+distance.toLocaleString('pt-BR')+' km.';
+};
+el('removeCity').onclick=()=>{
+ const city=el('cityDelete').value;if(!cities.includes(city))return;
+ for(let i=roads.length-1;i>=0;i--)if(roads[i].includes(city)){
+  roads.splice(i,1);el('gEdges').children[i].remove();
+ }
+ cities=cities.filter(c=>c!==city);delete points[city];syncMenus();draw();
+ el('cityMessage').textContent='Cidade '+city+' e suas estradas excluídas.';
+};
+function draw(){
+const tour=el('gMode').selectedIndex===1,start=el('gStart').value,end=el('gEnd').value;
+el('gEnd').disabled=tour;
+const edges=roads.map((road,i)=>{const [box,input]=el('gEdges').children[i].querySelectorAll('input');return {road,w:input.valueAsNumber,open:box.checked}}).filter(e=>e.open);
+const valid=edges.every(e=>Number.isFinite(e.w)&&e.w>=0);
+let best=Infinity,path=[],picked=[];
+function visit(node,seen,used,total){
+if(!tour&&node===end){if(total<best){best=total;path=seen;picked=used}return}
+for(const {road,w} of edges.filter(e=>e.road.includes(node))){
+const next=road.replace(node,'');
+if(tour&&seen.length===cities.length&&next===start&&total+w<best){best=total+w;path=[...seen,start];picked=[...used,road]}
+if(!seen.includes(next))visit(next,[...seen,next],[...used,road],total+w);
+}}
+if(valid&&cities.length===1){best=0;path=[start]}else if(valid&&cities.length)visit(start,[start],[],0);
+el('gResult').textContent=!cities.length?'Adicione uma cidade para começar a rede.':!valid?'Informe uma distância igual ou superior a zero para cada estrada aberta.':path.length?path.join(' → ')+' · '+best.toLocaleString('pt-BR')+' km':tour?'Nenhum circuito visita todas as cidades uma vez e retorna à origem.':'Não há caminho entre as cidades selecionadas.';
+el('gDegrees').textContent='Grau de cada cidade · '+cities.map(c=>c+' = '+edges.filter(e=>e.road.includes(c)).length).join(' · ');
+const lines=[],labels=[];
+for(const {road,w} of edges){const [a,b]=road.split('').map(c=>points[c]);const active=picked.includes(road);lines.push('<line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'" stroke="'+(active?'#C2410C':'#8B94A3')+'" stroke-width="'+(active?6:2)+'"/>');if(active){const chosen=lines.pop();lines.push(chosen.replace('#C2410C','white').replace('stroke-width="6"','stroke-width="9"'),chosen)}labels.push('<text fill="#14213D" font-size="14" font-weight="700" x="'+(a[0]+b[0])/2+'" y="'+((a[1]+b[1])/2-4)+'" stroke="white" stroke-width="5" paint-order="stroke">'+(Number.isFinite(w)?w:'?')+'</text>')}
+el('gMap').innerHTML=lines.join('')+labels.join('')+cities.map(c=>'<g transform="translate('+points[c].join(' ')+')"><circle r="20" fill="#14213D" stroke="'+(path.includes(c)?'#F2A33A':'none')+'" stroke-width="3"/><text text-anchor="middle" y="6" fill="white">'+c+'</text></g>').join('');
+}
+el('rede').addEventListener('input',draw);el('gReset').onclick=()=>{reset();el('cityMessage').textContent='Grafo padrão restaurado.'};reset();
+})();
+</script>
+<section id="gdesafio" hidden><a href="#grafos">← Teoria dos grafos</a><h1>Revise a rede</h1><p>A cidade A tem estradas para B (7 km) e E (17 km). B também liga a E (11 km). Considere apenas essas três estradas.</p><label>Qual é o grau de A?<input id="gd1" type="number" inputmode="decimal"></label><label>Quanto custa ir de A até E passando por B, em km?<input id="gd2" type="number" inputmode="decimal"></label><label>Se AE passar a medir 20 km, escreva o caminho mais curto de A até E (use letras separadas por hífen).<input id="gd3"></label><button id="gdCheck">Conferir respostas</button><p role="status" id="gdMsg"></p><a href="#rede">Testar no simulador →</a></section><script>document.getElementById('gdCheck').onclick=()=>{const d=id=>document.getElementById(id);d('gdMsg').textContent=[d('gd1').valueAsNumber===2?'✓ Grau correto.':'Grau: conte as duas ligações incidentes em A.',d('gd2').valueAsNumber===18?'✓ Custo correto.':'Custo: some 7 + 11 km.',d('gd3').value.toUpperCase().replace(/[-→> ,]+/g,'')==='ABE'?'✓ Caminho correto.':'Caminho: compare os 18 km via B com os 20 km da ligação direta.'].join(' ')}</script></main>
+<script>
+const $=id=>document.getElementById(id), palette=['#C2410C','#1D4ED8','#A21C6B','#6D28D9','#8A6100','#334155'];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>Number(n.toPrecision(6)).toLocaleString('pt-BR',{maximumSignificantDigits:6});
+let names,cost,rows,ax,ay;
+function init(){names=['Variável 1','Variável 2'];cost=[20,60];rows=[[70,70,4900],[90,50,4500],[2,0,80],[0,3,180]].map((v,i)=>({name:'Restrição '+(i+1),a:v.slice(0,2),b:v[2],op:'≤'}));ax=0;ay=1;$('sense').value='1';render()}
+function input(label,value,attrs,num=false){return '<label>'+esc(label)+'<input '+attrs+(num?' required type="number" inputmode="decimal" step="any"':' maxlength="40"')+' value="'+esc(value)+'"></label>'}
+function render(){
+$('vars').innerHTML=names.map((n,i)=>'<fieldset><legend>x'+(i+1)+'</legend><div class="grid">'+input('Nome',n,'data-v="'+i+'" data-k="name"')+input('Coeficiente no objetivo',cost[i],'data-v="'+i+'" data-k="cost"',true)+'</div><button data-delv="'+i+'" '+(names.length<=2?'disabled':'')+'>Remover variável</button></fieldset>').join('');
+$('rows').innerHTML=rows.map((r,i)=>'<fieldset style="border-left:5px solid '+palette[i]+'"><legend>R'+(i+1)+'</legend><div class="grid">'+input('Nome da restrição',r.name,'data-r="'+i+'" data-k="name"')+r.a.map((v,j)=>input('x'+(j+1)+' · '+names[j],v,'data-r="'+i+'" data-j="'+j+'"',true)).join('')+'<label>Relação<select data-r="'+i+'" data-k="op">'+['≤','≥','='].map(s=>'<option '+(s===r.op?'selected':'')+'>'+s+'</option>').join('')+'</select></label>'+input('Limite / disponibilidade',r.b,'data-r="'+i+'" data-k="b"',true)+'</div><button data-delr="'+i+'">Remover restrição</button></fieldset>').join('');
+$('addV').disabled=names.length>=5;$('addR').disabled=rows.length>=6;axes();update()}
+function axes(){for(const [id,index] of [['axisX',ax],['axisY',ay]])$(id).innerHTML=names.map((n,i)=>'<option value="'+i+'" '+(i===index?'selected':'')+'>x'+(i+1)+' · '+esc(n)+'</option>').join('')}
+const dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0);
+function intersection(combo){const m=combo.map(r=>[...r.a,r.b]),n=m.length;
+for(let j=0;j<n;j++){let p=j;for(let i=j+1;i<n;i++)if(Math.abs(m[i][j])>Math.abs(m[p][j]))p=i;if(Math.abs(m[p][j])<1e-12)return;[m[p],m[j]]=[m[j],m[p]];const pivot=m[j][j];for(let k=j;k<=n;k++)m[j][k]/=pivot;for(let i=0;i<n;i++)if(i!==j){const f=m[i][j];for(let k=j;k<=n;k++)m[i][k]-=f*m[j][k]}}
+return m.map(row=>row[n])}
+function bestVertex(cs,c){let best=null,value=-Infinity;const chosen=[];
+function walk(start){if(chosen.length===c.length){const x=intersection(chosen);if(x&&cs.every(r=>dot(r.a,x)<=r.b+1e-8*Math.max(1,Math.abs(r.b)))){const z=dot(c,x);if(z>value){value=z;best=x}}return}
+for(let i=start;i<=cs.length-(c.length-chosen.length);i++){chosen.push(cs[i]);walk(i+1);chosen.pop()}}
+walk(0);return best}
+function constraints(){const cs=names.map((_,i)=>({a:names.map((_,j)=>i===j?-1:0),b:0}));for(const r of rows){if(r.op!=='≥')cs.push(r);if(r.op!=='≤')cs.push({a:r.a.map(v=>-v),b:-r.b})}return cs}
+function update(){$('downloadStatus').textContent='';$('extras').hidden=$('chart').hidden=true;const out=$('result');if([...cost,...rows.flatMap(r=>[...r.a,r.b])].some(v=>!Number.isFinite(v))){out.textContent='Preencha os campos numéricos para recalcular.';return}
+const c=cost.map(v=>v*Number($('sense').value)),cs=constraints(),x=bestVertex(cs,c);
+if(!x){out.textContent='Modelo inviável. Nenhuma combinação atende simultaneamente às restrições.';return}
+const directions=cs.map(r=>({a:r.a,b:0}));directions.push({a:names.map(()=>1),b:1});const d=bestVertex(directions,c);if(d&&dot(d,c)>1e-10){out.textContent='Objetivo ilimitado. As restrições permitem melhorar o resultado indefinidamente.';return}
+out.textContent='Valor ótimo de Z = '+fmt(dot(cost,x))+' · '+names.map((n,i)=>(n||'x'+(i+1))+' = '+fmt(x[i])).join(' · ');$('extras').hidden=$('chart').hidden=false;draw(x,cs)}
+function draw(x,cs){
+const patterns=['none','9 4','3 3','12 4 2 4','6 3 2 3','14 5'];
+const reduce=r=>[r.a[ax],r.a[ay],r.b-r.a.reduce((s,v,i)=>s+(i===ax||i===ay?0:v*x[i]),0)];
+const lines=rows.map(reduce),valid=cs.map(reduce);
+const extent=(i,j)=>{const vals=lines.filter(l=>l[j]!==0).map(l=>l[2]/l[j]).filter(v=>v>0);return 1.15*Math.max(1,x[i],...vals)};
+const w=extent(ax,0),h=extent(ay,1),X=v=>67+516*v/w,Y=v=>303-265*v/h;
+let poly=[[0,0],[w,0],[w,h],[0,h]];
+for(const [a,b,r] of valid){const next=[];poly.forEach((p,i)=>{const q=poly[(i+1)%poly.length],f=a*p[0]+b*p[1]-r,g=a*q[0]+b*q[1]-r;if(f<=1e-8)next.push(p);if((f<0&&g>0)||(f>0&&g<0)){const t=f/(f-g);next.push(p.map((v,k)=>v+t*(q[k]-v)))}});poly=next}
+const line=(x,y,u,v,color,width=1,dash="none")=>'<line x1="'+x+'" y1="'+y+'" x2="'+u+'" y2="'+v+'" stroke="'+color+'" stroke-width="'+width+'" stroke-dasharray="'+dash+'"/>';
+const txt=(x,y,s)=>'<text x="'+x+'" y="'+y+'" text-anchor="middle" font-size="13" fill="#475569">'+esc(s)+'</text>';
+let svg='<defs><clipPath id="frame"><rect x="67" y="38" width="516" height="265"/></clipPath></defs>';
+for(let i=0;i<=5;i++){const u=w*i/5,v=h*i/5;svg+=line(X(u),38,X(u),303,'#E3DED2')+line(67,Y(v),583,Y(v),'#E3DED2')+txt(X(u),325,fmt(u))+txt(32,Y(v)+4,fmt(v))}
+svg+='<g clip-path="url(#frame)"><polygon fill="#F6D58E" fill-opacity=".6" stroke="#14213D" stroke-opacity=".35" stroke-width="1.5" points="'+poly.map(p=>X(p[0])+','+Y(p[1])).join(' ')+'"/>';
+lines.forEach(([a,b,r],i)=>{if(b)svg+=line(X(0),Y(r/b),X(w),Y((r-a*w)/b),palette[i],2.8,patterns[i]);else if(a)svg+=line(X(r/a),38,X(r/a),303,palette[i],2.8,patterns[i])});
+$('plot').innerHTML=svg+'</g><path d="M67 38V303H583" fill="none" stroke="#14213D" stroke-width="1.5"/><circle r="12" fill="none" stroke="#C2410C" stroke-width="2" cx="'+X(x[ax])+'" cy="'+Y(x[ay])+'"/><circle class="optimum" r="7" fill="#14213D" stroke="white" stroke-width="2" cx="'+X(x[ax])+'" cy="'+Y(x[ay])+'"/>'+txt(310,354,'x'+(ax+1)+' · '+names[ax])+txt(165,23,'x'+(ay+1)+' · '+names[ay]);
+$('slice').textContent=names.length===2?'Vista do modelo com duas variáveis.':'Corte com '+names.map((n,i)=>i===ax||i===ay?null:n+' = '+fmt(x[i])).filter(Boolean).join(', ')+'.';
+$('legend').innerHTML=rows.map((r,i)=>'<span class="key"><svg aria-hidden="true" viewBox="0 0 32 10"><line x1="0" x2="32" y1="5" y2="5" stroke="'+palette[i]+'" stroke-width="3" stroke-dasharray="'+patterns[i]+'"/></svg>R'+(i+1)+' · '+esc(r.name)+(lines[i][0]===0&&lines[i][1]===0?' (sem reta neste corte)':'')+'</span>').join('')+'<p>Área âmbar clara · região viável &nbsp; ● Ponto navy com anel laranja · solução ótima</p>'}
+document.addEventListener('input',e=>{const t=e.target,d=t.dataset;if(d.v!==undefined){if(d.k==='name'){names[+d.v]=t.value;axes();document.querySelectorAll('[data-j="'+d.v+'"]').forEach(el=>el.parentNode.firstChild.textContent='x'+(+d.v+1)+' · '+t.value)}else cost[+d.v]=t.valueAsNumber}
+else if(d.r!==undefined){const r=rows[+d.r];if(d.j!==undefined)r.a[+d.j]=t.valueAsNumber;else r[d.k]=d.k==='b'?t.valueAsNumber:t.value}
+else if(t.id==='axisX'){const n=+t.value;if(n===ay)ay=ax;ax=n;axes()}else if(t.id==='axisY'){const n=+t.value;if(n===ax)ax=ay;ay=n;axes()}else if(t.id!=='sense')return;update()});
+document.addEventListener('click',e=>{const d=e.target.dataset;if(d.delv!==undefined){const i=+d.delv;names.splice(i,1);cost.splice(i,1);rows.forEach(r=>r.a.splice(i,1));ax=0;ay=1}else if(d.delr!==undefined)rows.splice(+d.delr,1);else if(e.target.id==='addV'){names.push('Variável '+(names.length+1));cost.push(0);rows.forEach(r=>r.a.push(0))}else if(e.target.id==='addR')rows.push({name:'Restrição '+(rows.length+1),a:names.map(()=>0),op:'≤',b:0});else if(e.target.id==='reset'){init();return}else return;render()});
+async function downloadModel(){
+  const button=$('downloadPlot'), status=$('downloadStatus');
+  button.disabled=true;
+  const graph=$('plot').cloneNode(true);
+  graph.setAttribute('xmlns','http://www.w3.org/2000/svg');
+  graph.setAttribute('width','1240');
+  graph.setAttribute('height','730');
+  const uri=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(graph)],{type:'image/svg+xml;charset=utf-8'}));
+  const canvas=document.createElement('canvas');
+  canvas.width=1440;
+  const ctx=canvas.getContext('2d');
+  const drawList=[];
+  let y=72;
+  function paragraph(text,size=25,weight=400,color='#1B2433'){
+    const font=weight+' '+size+'px sans-serif';
+    ctx.font=font;
+    let line='';
+    for(const word of text.split(/\s+/)){
+      const candidate=line?line+' '+word:word;
+      if(line&&ctx.measureText(candidate).width>1320){
+        drawList.push({text:line,font,y,color});y+=size*1.45;line=word;
+      }else line=candidate;
+    }
+    drawList.push({text:line,font,y,color});y+=size*1.45;
+  }
+  function expression(coefficients){
+    return coefficients.map((c,i)=>(i?(c<0?' − ':' + '):(c<0?'−':''))+String(Math.abs(c)).replace('.',',')+'·x'+(i+1)).join('');
+  }
+  try{
+    paragraph('Pesquisa Operacional · Ponto ótimo',42,700);
+    paragraph($('result').textContent,29,600);
+    paragraph($('slice').textContent);
+    const graphTop=y; y+=770;
+    paragraph('Legenda das restrições',29,700);
+    const samples=[];
+    rows.forEach((r,i)=>{
+      const sample=$('legend').querySelectorAll('line')[i];
+      samples.push({y:y-8,color:palette[i],dash:sample.getAttribute('stroke-dasharray')});
+      paragraph('R'+(i+1)+' · '+r.name,24);
+      drawList[drawList.length-1].x=148;
+    });
+    paragraph('Área âmbar clara · região viável     ● Ponto navy com anel laranja · solução ótima',23);
+    y+=16;paragraph('Variáveis de decisão',31,700);
+    names.forEach((name,i)=>paragraph('x'+(i+1)+' = '+name+'   |   Coeficiente no objetivo: '+String(cost[i]).replace('.',',')));
+    y+=16;paragraph('Função objetivo',31,700);
+    paragraph(($('sense').value==='1'?'Maximizar':'Minimizar')+' Z = '+expression(cost));
+    y+=16;paragraph('Restrições',31,700);
+    rows.forEach((r,i)=>paragraph('R'+(i+1)+' · '+r.name+'    '+expression(r.a)+' '+r.op+' '+String(r.b).replace('.',',')));
+    paragraph('Todas as variáveis são contínuas e maiores ou iguais a zero.',22);
+    canvas.height=Math.ceil(y+40);
+    ctx.fillStyle='white';ctx.fillRect(0,0,canvas.width,canvas.height);
+    for(const item of drawList){
+      ctx.fillStyle=item.color;ctx.font=item.font;ctx.fillText(item.text,item.x||60,item.y);
+    }
+    for(const sample of samples){
+      ctx.strokeStyle=sample.color;ctx.lineWidth=5;
+      ctx.setLineDash(sample.dash==='none'?[]:sample.dash.split(' ').map(Number));
+      ctx.beginPath();ctx.moveTo(60,sample.y);ctx.lineTo(130,sample.y);ctx.stroke();
+    }
+    const img=new Image();
+    img.src=uri;await img.decode();
+    ctx.drawImage(img,100,graphTop,1240,730);
+    const png=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
+    if(!png)throw new Error('PNG');
+    const link=document.createElement('a');
+    link.href=URL.createObjectURL(png);link.download='pesquisa-operacional-modelo.png';
+    document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(link.href),60000);
+    status.textContent='PNG gerado.';
+  }catch{status.textContent='Não foi possível gerar o PNG. Tente novamente.'}
+  finally{URL.revokeObjectURL(uri);button.disabled=false}
+}
+$('downloadPlot').addEventListener('click',downloadModel);
+const questions=[["Ao formular um problema de otimização, como reconhecer uma variável de decisão?", "É um limite informado no enunciado", "É uma quantidade cujo valor pode ser escolhido para atingir o objetivo", "É sempre um valor medido em reais", "2", "Pergunte o que pode ser escolhido. Conforme o problema, pode ser uma quantidade produzida, um tempo ou um volume transportado."], ["Uma equipe distribui x₁ horas no projeto A e x₂ horas no projeto B. Cada hora gera, respectivamente, 20 e 60 pontos de benefício. Qual função mede o benefício total?", "Z = 20x₁ + 60x₂", "Z = 60x₁ + 20x₂", "Z = 80(x₁ + x₂)", "1", "Cada hora em A soma 20 pontos e cada hora em B soma 60. Somar as duas contribuições dá o benefício do plano."], ["Com Z = 20x₁ + 60x₂, qual é o lucro em (5, 10)?", "R$ 300", "R$ 600", "R$ 700", "3", "Substituindo as quantidades, temos 20 × 5 + 60 × 10 = 100 + 600 = R$ 700."], ["Uma transportadora envia x₁ caixas pela rota A e x₂ pela rota B. Cada caixa pesa 70 kg. A capacidade total é de 4.900 kg. Qual restrição representa essa capacidade?", "70x₁ + 70x₂ ≥ 4.900", "70x₁ + 70x₂ ≤ 4.900", "x₁ + x₂ ≤ 4.900", "2", "O lado esquerdo soma o peso das caixas nas duas rotas. O peso total deve ser menor ou igual à capacidade."], ["Como simplificar 70x₁ + 70x₂ ≤ 4.900?", "x₁ + x₂ ≤ 70", "x₁ + x₂ ≤ 4.830", "x₁ + x₂ ≥ 70", "1", "Dividimos os dois lados por 70. Como 70 é positivo, o sinal permanece ≤."], ["Um laboratório dispõe de 180 minutos de máquina. Cada análise leva 3 minutos. Considerando apenas esse recurso, quantas análises cabem nesse tempo?", "30", "90", "60", "3", "Se x é a quantidade de análises, 3x ≤ 180. Logo, cabem no máximo 60 análises."], ["Em um modelo, x₁ representa o volume de água enviado por uma tubulação. O que a condição x₁ ≥ 0 permite?", "Apenas volumes inteiros", "Volume zero ou positivo", "Obrigatoriamente algum volume positivo", "2", "A não negatividade permite deixar a tubulação sem fluxo ou enviar um volume positivo, inclusive fracionário."], ["Quando um ponto pertence à região viável?", "Quando satisfaz todas as restrições", "Quando maximiza o lucro", "Quando está sobre qualquer reta do gráfico", "1", "Para ser viável, a combinação precisa respeitar cada limite e a não negatividade."], ["Considere x₁ + x₂ ≤ 70 e x₂ ≤ 60. Qual ponto viola somente o primeiro limite?", "(10, 60)", "(5, 65)", "(20, 55)", "3", "Em (20, 55), a soma é 75, acima de 70, mas 55 respeita o limite de 60."], ["Onde a reta x₁ + x₂ = 70 cruza o eixo horizontal x₁?", "(0, 70)", "(70, 0)", "(35, 35)", "2", "Sobre o eixo horizontal, x₂ vale zero. Logo, x₁ = 70."], ["Qual ponto está no encontro das retas x₁ + x₂ = 70 e x₂ = 60?", "(10, 60)", "(60, 10)", "(70, 60)", "1", "Substituindo 60 na primeira igualdade, x₁ = 70 − 60 = 10."], ["Um plano reserva x₁ horas de consultoria a R$ 90 por hora e x₂ horas de suporte a R$ 50 por hora. Com orçamento de R$ 4.500, quanto sobra no plano (10, 60)?", "R$ 3.900", "R$ 0", "R$ 600", "3", "O plano custa 90 × 10 + 50 × 60 = R$ 3.900. A folga no orçamento é de R$ 600."], ["Qual restrição está ativa em (10, 60)?", "2x₁ ≤ 80", "3x₂ ≤ 180", "90x₁ + 50x₂ ≤ 4.500", "2", "Uma restrição está ativa quando o limite é atingido. Aqui, 3 × 60 = 180."], ["Três planos são viáveis: (10, 60), (25, 45) e (40, 18). Com lucro Z = 20x₁ + 60x₂, qual deles gera o maior lucro?", "(10, 60)", "(25, 45)", "(40, 18)", "1", "Os lucros são R$ 3.800, R$ 3.200 e R$ 1.880, respectivamente."], ["Um modelo maximiza Z = 20x₁ + 60x₂, com x₁ + x₂ ≤ 70, x₂ ≤ 60 e x₁, x₂ ≥ 0. Qual argumento prova que (10, 60) é ótimo?", "Todo vértice tem o mesmo valor de Z", "Basta provar que (10, 60) é viável", "Nenhum plano supera 3.800 e esse ponto atinge 3.800", "3", "Z = 20(x₁ + x₂) + 40x₂ ≤ 20 × 70 + 40 × 60 = 3.800. O ponto (10, 60) satisfaz os limites e alcança esse valor."], ["Uma central usa 3 horas para atender cada solicitação do tipo 2. O eixo vertical x₂ conta essas solicitações. Se o tempo disponível cair de 180 para 150 horas, o que acontece com a reta desse limite?", "Ela sobe para x₂ = 75", "Ela desce para x₂ = 50", "Ela gira em torno da origem", "2", "O novo limite é 150 ÷ 3 = 50. A reta continua horizontal."], ["Uma clínica agenda x₁ consultas e x₂ exames por semana. Há até 70 vagas no total e até 50 exames. Cada consulta rende R$ 20 e cada exame, R$ 60. Qual plano maximiza a receita?", "20 consultas e 50 exames, com R$ 3.400", "10 consultas e 60 exames, com R$ 3.800", "70 consultas e nenhum exame, com R$ 1.400", "1", "Cada vaga de exame rende mais. Use as 50 vagas permitidas para exames e as 20 restantes para consultas: 50 × 60 + 20 × 20 = R$ 3.400."], ["Em um modelo de produção, o lucro unitário de um produto muda. Todos os consumos e limites de recursos permanecem iguais. O que pode acontecer?", "O estoque de material aumenta", "A região viável muda de tamanho", "Outra combinação pode se tornar ótima", "3", "O lucro altera a função objetivo. As restrições continuam definindo a mesma região viável."], ["Se dois vértices vizinhos atingem o mesmo lucro máximo, quais pontos também são ótimos?", "Somente o ponto médio", "Todos os pontos do segmento entre os dois", "Todos os pontos da região viável", "2", "Em um modelo linear contínuo, o segmento é viável e o valor da função objetivo permanece constante entre esses vértices."], ["Num modelo com três variáveis, o simulador mostra x₁ e x₂ nos eixos e fixa x₃ = 30. O que a região exibida representa?", "As combinações viáveis de x₁ e x₂ quando x₃ vale 30", "Todos os valores possíveis de x₃", "Um modelo em que x₃ foi excluída do cálculo", "1", "O gráfico é um corte do modelo. Alterar x₃ pode mudar as combinações de x₁ e x₂ que respeitam os limites."]];
+let current=0;
+const picks=Array(20).fill(null), revealed=Array(20).fill(false);
+function showQuestion(){
+ const box=$('question');
+ if(current===questions.length){
+   box.innerHTML='<h2>Lista concluída</h2><p>Você chegou ao final das 20 questões de Ponto ótimo.</p><button id="restart">Refazer exercícios</button> <a href="#resumo">Revisar conteúdo</a>';
+   $('restart').onclick=()=>{current=0;picks.fill(null);revealed.fill(false);showQuestion()};return;
+ }
+ const [prompt,...parts]=questions[current], correct=Number(parts[3])-1;
+ const options=parts.slice(0,3).map((v,i)=>'<label class="'+(picks[current]===i?(i===correct?'right':'wrong'):'')+'"><input type="radio" name="choice" value="'+i+'" '+(picks[current]===i?'checked':'')+'>'+esc(v)+(picks[current]===i?'<strong class="mark">'+(i===correct?'✓ Correta':'✕ Incorreta')+'</strong>':'')+'</label>').join('');
+ const feedback=picks[current]===null?'Resposta':picks[current]===correct?'Você acertou':'Confira a resposta correta';
+ box.innerHTML='<small>Questão '+(current+1)+' de 20</small><fieldset><legend>'+esc(prompt)+'</legend>'+options+'</fieldset><button id="reveal" aria-expanded="'+revealed[current]+'">'+(revealed[current]?'Ocultar resposta':'Olhar resposta')+'</button>'+(revealed[current]?'<p class="feedback" role="status"><b>'+feedback+' · '+esc(parts[correct])+'</b><br>'+esc(parts[4])+'</p>':'')+'<div class="actions"><button id="previous" '+(current===0?'disabled':'')+'>Questão anterior</button><button id="advance">'+(current===19?'Concluir exercícios':'Ir para a próxima questão')+'</button></div>';
+ box.querySelectorAll('input').forEach(input=>input.onchange=()=>{picks[current]=Number(input.value);showQuestion();box.querySelector('input:checked').focus()});
+ $('reveal').onclick=()=>{revealed[current]=!revealed[current];showQuestion();$('reveal').focus()};
+ $('previous').onclick=()=>{current--;showQuestion();window.scrollTo(0,0)};
+ $('advance').onclick=()=>{current++;showQuestion();window.scrollTo(0,0)};
+}
+function route(){const pages={'#grafos':'grafos','#rede':'rede','#gdesafio':'gdesafio','#ponto-otimo':'lesson','#simulador':'simulador','#exercicios':'exercicios','#pratica':'pratica','#revisao':'revisao','#resumo':'resumo'};const active=pages[location.hash]||'catalog';for(const id of ['grafos','rede','gdesafio','catalog','lesson','simulador','exercicios','pratica','revisao','resumo'])$(id).hidden=id!==active;if(active==='pratica')showQuestion();const tab=['exercicios','pratica'].includes(active)?'exercicios':['revisao','resumo'].includes(active)?'revisao':'conteudo';document.querySelectorAll('header nav a').forEach(a=>{if(a.hash==='#'+tab)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});document.title=({grafos:'Teoria dos grafos',rede:'Simulador de rotas',gdesafio:'Revise a rede',exercicios:'Exercícios',pratica:'Exercícios de ponto ótimo',revisao:'Revisão',resumo:'Revisão de ponto ótimo',catalog:'Conteúdo',lesson:'Ponto ótimo',simulador:'Simulador de ponto ótimo'})[active]+' | Pesquisa Operacional';window.scrollTo(0,0)}window.addEventListener('hashchange',route);init();route();
+</script><script>(()=>{
+ const cases=[{name:'Oficina de móveis',intro:'Escolha quantas mesas (x) e cadeiras (y) fabricar. Cada mesa rende R$ 70 e cada cadeira rende R$ 40.',goal:[70,40],sense:'max',limits:[
+ ['Madeira','Cada mesa usa 3 placas e cada cadeira usa 1. Há até 24 placas disponíveis.',3,1,'<=',24],
+ ['Montagem','Cada mesa exige 2 horas e cada cadeira exige 1. A equipe dispõe de até 18 horas.',2,1,'<=',18],
+ ['Pedido mínimo','Um cliente já encomendou pelo menos 4 cadeiras.',0,1,'>=',4]]},
+ {name:'Transporte de cargas',intro:'Escolha quantas viagens de van (x) e de caminhão (y) contratar. Cada viagem custa R$ 120 de van ou R$ 300 de caminhão.',goal:[120,300],sense:'min',limits:[
+ ['Demanda','Uma van leva 2 toneladas e um caminhão leva 6. É preciso transportar pelo menos 30 toneladas.',2,6,'>=',30],
+ ['Tempo','Cada viagem de van ocupa 1 hora de doca e cada viagem de caminhão ocupa 2 horas. Há até 14 horas disponíveis.',1,2,'<=',14],
+ ['Caminhões','A transportadora oferece no máximo 5 viagens de caminhão.',0,1,'<=',5]]}
+ ];
+ // Parse sums of constants and linear terms; never execute a student expression.
+ function linear(text){
+   const terms=text.match(/[+-]?[^+-]+/g);
+   if(!terms||terms.join('')!==text)throw Error();
+   const out=[0,0,0];
+   for(const term of terms){
+     const m=term.match(/^([+-]?)(?:(\d+(?:\.\d+)?|\.\d+)\*?)?([xy])$/);
+     if(m){out[m[3]==='x'?0:1]+=(m[1]==='-'?-1:1)*Number(m[2]||1);continue}
+     if(!/^[+-]?(?:\d+(?:\.\d+)?|\.\d+)$/.test(term))throw Error();
+     out[2]+=Number(term)
+   }
+   if(!out.every(Number.isFinite))throw Error();
+   return out
+ }
+ function check(raw,c,i){
+   let t=raw.toLowerCase().replace(/menos/g,'-').replace(/\s+/g,'').replace(/x[₁1]/g,'x').replace(/x[₂2]/g,'y').replace(/[·×]/g,'*').replace(/−/g,'-').replace(/,/g,'.').replace(/≤/g,'<=').replace(/≥/g,'>=');
+   const near=(a,b)=>Math.abs(a-b)<1e-8;
+   if(!i){
+     const prefix=t.match(/^(maximizar|minimizar|max|min)/);
+     if(prefix&&!prefix[0].startsWith(c.sense))return 'Confira se o objetivo é aumentar o lucro ou reduzir o custo.';
+     t=t.replace(/^(maximizar|minimizar|max|min)/,'').replace(/^z=/,'');
+     const a=linear(t);return a.every((v,j)=>near(v,[...c.goal,0][j]))?'': 'Multiplique cada quantidade pelo valor de uma unidade e some as duas contribuições.'
+   }
+   const parts=t.split(/(<=|>=|=|<|>)/);if(parts.length!==3)return 'Inclua um sinal entre o consumo total e o limite. Você pode usar <= ou >=.';
+   const left=linear(parts[0]),right=linear(parts[2]),v=left.map((n,j)=>n-right[j]);
+   const [, ,a,b,op,limit]=c.limits[i-1],factor=a?v[0]/a:v[1]/b;
+   if(!factor||!near(v[0],a*factor)||!near(v[1],b*factor))return 'Confira quanto cada unidade de x e de y contribui para esta restrição.';
+   const expected=factor>0?op:(op==='<='?'>=':'<=');
+   if(parts[1]!==expected)return 'Confira o sinal. “Até” inclui o máximo permitido. “Pelo menos” inclui o mínimo exigido.';
+   return near(v[2],-limit*factor)?'':'Confira o limite do enunciado. Se simplificar a expressão, divida os dois lados pelo mesmo número.'
+ }
+ const panel=document.getElementById('modelPractice');let scenario=0,step=0,entries=[];
+ function render(){
+   const c=cases[scenario],goal=step===0;
+   panel.innerHTML='<label>Cenário<select id="caseChoice">'+cases.map((v,j)=>'<option '+(j===scenario?'selected':'')+'>'+v.name+'</option>').join('')+'</select></label><p>'+c.intro+'</p>';
+   panel.querySelector('select').onchange=e=>{scenario=e.target.selectedIndex;step=0;entries=[];render()};
+   if(step===4){
+     const list=document.createElement('ol');panel.insertAdjacentHTML('beforeend','<h2>Seu modelo está completo</h2>');
+     entries.forEach((value,i)=>{const item=document.createElement('li');item.textContent=(i?c.limits[i-1][0]:(c.sense==='max'?'Maximizar Z':'Minimizar Z'))+' · '+value;list.append(item)});panel.append(list);
+     panel.insertAdjacentHTML('beforeend','<p>Como as variáveis contam itens ou viagens, x e y são inteiros não negativos.</p><button id="another">Praticar o outro cenário</button>');
+     panel.querySelector('#another').onclick=()=>{scenario=1-scenario;step=0;entries=[];render()};return;
+   }
+   panel.insertAdjacentHTML('beforeend','<small>Etapa '+(step+1)+' de 4</small><h2>'+(goal?'Função objetivo':c.limits[step-1][0])+'</h2><p>'+(goal?(c.sense==='max'?'Escreva a função que calcula o lucro total a maximizar.':'Escreva a função que calcula o custo total a minimizar.'):c.limits[step-1][1]+' Escreva a restrição.')+'</p><div><label for="formulaAnswer">Sua '+(goal?'função objetivo':'restrição')+'</label><input required maxlength="120" autocomplete="off" spellcheck="false" id="formulaAnswer"><p>Use x e y. Você pode escrever 2x ou 2*x e usar os sinais &lt;= e &gt;=.</p><button type="button" id="checkModel">Conferir resposta</button></div><p role="status" id="modelFeedback"></p><button hidden id="modelNext">'+(step===3?'Ver modelo completo':'Próxima etapa →')+'</button>');
+   const field=panel.querySelector('input'),next=panel.querySelector('#modelNext'),msg=panel.querySelector('#modelFeedback');
+   const verify=()=>{let issue;try{issue=field.value.trim()?check(field.value,c,step):'Digite sua expressão no campo acima.'}catch{issue='Use uma soma de termos com x e y, sem parênteses. Para a função objetivo, Z = é opcional.'}
+     msg.textContent=issue?'✗ Incorreto. '+issue:'✓ Correto. '+(goal?'A expressão soma as contribuições das duas variáveis.':'A desigualdade representa o limite descrito.');msg.className=issue?'modelWrong':'modelRight';next.hidden=Boolean(issue);if(!issue)entries[step]=field.value};
+   panel.querySelector('#checkModel').onclick=verify;
+   field.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();verify()}};
+   field.oninput=()=>{next.hidden=true;msg.textContent='';msg.className=''};
+   next.onclick=()=>{step++;render();panel.querySelector('input, #another')?.focus()}
+ }
+ render();
+})();
+</script>
+
+<script>const narrowMonitor=matchMedia('(max-width:739px) and (orientation:portrait), (max-width:739px) and (min-height:501px)');function sizeMonitor(){document.querySelector('#extras').open=!narrowMonitor.matches}sizeMonitor();narrowMonitor.addEventListener('change',sizeMonitor);</script></body></html>
